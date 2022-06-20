@@ -1,0 +1,44 @@
+﻿@model Dywizjon.Models.Ticket
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Szczegóły</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            ID klienta
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OwnerId)
+        </dd>
+
+        <dt>
+            Typ zamówienia
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+
+    </dl>
+</div>
+@if (ViewBag.email == "admin@test.com")
+{
+<p>
+
+    @Html.ActionLink("Edytuj", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Wróć do listy zamówień", "Index")
+</p>
+}
+else
+{
+<p>
+    @Html.ActionLink("Wróć do listy zamówień", "Index")
+</p>
+}
+

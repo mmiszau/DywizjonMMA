@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Dywizjon.Models.Ticket>
+
+@{
+    ViewBag.Title = "Confirm";
+}
+
+<h2>Dziękujemy za zamówienie!</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            ID klienta
+        </th>
+        <th>
+            Typ licencji
+        </th>
+        <th></th>
+    </tr>
+
+
+@foreach (var item in Model)
+{
+
+    if (item.OwnerId == ViewBag.OwnerId)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.OwnerId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Type)
+        </td>
+        <td>           
+            @Html.ActionLink("Szczegóły", "Details", new { id = item.Id })
+        </td>
+        }
+
+    </tr>
+    }
+}
+
+</table>

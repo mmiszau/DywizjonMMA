@@ -1,0 +1,42 @@
+﻿@model Dywizjon.Models.Ticket
+
+@{
+    ViewBag.Title = "Edit";
+    var list = new List<string>() { "basic", "vip", "ultra" };
+}
+
+<h2>Edytuj</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+
+    <div class="form-group">
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.Type, new SelectList(list), "Wybierz rodzaj", htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Type, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @if (ViewBag.email == "admin@test.com")
+        {
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Zapisz" class="btn btn-default" />
+            </div>
+
+        }
+
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Wróć do listy zamówień", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
